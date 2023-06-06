@@ -1,12 +1,12 @@
 @echo off
 REM    This is the Windows build script for the Maya Dem-Bones python bindings.
-REM    usage: build.bat [2018|2019|2020|2022]
+REM    usage: build.bat [2018|2019|2020|2022|2023|2024]
 
 set project_name=_dem_bones
 set project_entry_point=%~dp0%src\main.cpp
 
 set maya_version=%1
-if "%maya_version%"=="" (set maya_version=2022)
+if "%maya_version%"=="" (set maya_version=2024)
 set maya_directory=C:\Program Files\Autodesk\Maya%maya_version%
 set maya_include=%maya_directory%\include
 set maya_lib=%maya_directory%\lib
@@ -39,6 +39,18 @@ if "%maya_version%"=="2022" (
     set python_lib=python37.lib
     set python_include=Python37\Python
     set vs_directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\"
+)
+if "%maya_version%"=="2023" (
+    set python_export="PyInit__dem_bones"
+    set python_lib=python39.lib
+    set python_include=Python39\Python
+    set vs_directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\"
+)
+if "%maya_version%"=="2024" (
+    set python_export="PyInit__dem_bones"
+    set python_lib=python310.lib
+    set python_include=Python310\Python
+    set vs_directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\"
 )
 
 REM    Set up the Visual Studio environment variables for calling the MSVC compiler;
