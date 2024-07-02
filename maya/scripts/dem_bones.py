@@ -22,9 +22,9 @@ class DemBones(_dem_bones.DemBones):
         :param int start_frame:
         :param int end_frame:
         """
-        t = time.clock()
+        t = time.perf_counter()
         super(DemBones, self).compute(source, target, start_frame, end_frame)
-        elapsed = time.clock() - t
+        elapsed = time.perf_counter() - t
 
         err = self.rmse()
         log.info("Decomposed smooth skin weights for '{}' with an rmse of "
