@@ -15,3 +15,6 @@ PYTHONPATH +:= build/windows-maya-2023
 
 + PLATFORM:win64 MAYAVERSION:2024 dem-bones 0.1.0 <PATH>
 PYTHONPATH +:= build/windows-maya-2024
+
++ PLATFORM:win64 MAYAVERSION:2026 dem-bones 0.1.0 <PATH>
+PYTHONPATH +:= build/windows-maya-2026
